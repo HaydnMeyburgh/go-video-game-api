@@ -15,7 +15,7 @@ type VideoGame struct {
 	ID        string     `json:"id"`
 	Name      string     `json:"name"`
 	Genre     string     `json:"genre"`
-	Developer *Developer `json:"publisher"`
+	Developer *Developer `json:"developer & publisher"`
 }
 
 type Developer struct {
@@ -84,7 +84,7 @@ func main() {
 
 	games = append(games, VideoGame{ID: "1", Name: "Destiny 2", Genre: "FPS/RPG", Developer: &Developer{DeveloperName: "Bungie", PublisherName: "Bungie"}})
 	games = append(games, VideoGame{ID: "2", Name: "Call of Duty: Black ops 3", Genre: "FPS", Developer: &Developer{DeveloperName: "Activision", PublisherName: "Treyarch"}})
-	games = append(games, VideoGame{ID: "1", Name: "Witcher 3", Genre: "RPG", Developer: &Developer{DeveloperName: "CD Projekt RED", PublisherName: "CD Project"}})
+	games = append(games, VideoGame{ID: "3", Name: "Witcher 3", Genre: "RPG", Developer: &Developer{DeveloperName: "CD Projekt RED", PublisherName: "CD Project"}})
 
 	r.HandleFunc("/videogames", getVideoGames).Methods("GET")
 	r.HandleFunc("/videogames/{id}", getVideoGame).Methods("GET")
