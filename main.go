@@ -29,7 +29,16 @@ func getVideoGames(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(games)
 }
 
-
+func deleteVideoGame(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	params := mux.Vars(r)
+	for index, game := range games {
+		if game.ID == params["id"] {
+			games = append(games[:index], games[index+1:]...)
+			break
+		}
+	}
+}
 
 func main() {
 	r := mux.NewRouter()
