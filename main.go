@@ -38,6 +38,17 @@ func deleteVideoGame(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 	}
+	json.NewEncoder(w).Encode(games)
+}
+
+func getVideoGame(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	params := mux.Vars(r)
+	for _, game := range games {
+		if game.ID == params["id"] {
+			json.NewEncoder(w).Encode(game)
+		}
+	}
 }
 
 func main() {
