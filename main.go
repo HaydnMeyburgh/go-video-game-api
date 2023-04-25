@@ -51,6 +51,15 @@ func getVideoGame(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func createVideoGame(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	var game VideoGame
+	_ = json.NewDecoder(r.Body).Decode(&game)
+	game.ID = strconv.Itoa(rand.Intn(10000))
+	games = append(games, game)
+	json.NewEncoder(w).Encode(game)
+}
+
 func main() {
 	r := mux.NewRouter()
 
